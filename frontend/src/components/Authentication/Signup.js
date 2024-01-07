@@ -12,7 +12,7 @@ const Signup = () => {
   const handleClick = () => setShow(!show);
   const toast = useToast();
   const history = useHistory();
-
+//  const navigate=useNavigate();
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [confirmpassword, setConfirmpassword] = useState();
