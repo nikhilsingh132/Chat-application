@@ -4,6 +4,8 @@ const dotenv = require("dotenv");
 const userRoutes = require("./routes/userRoutes");
 const chatRoutes = require("./routes/chatRoutes");
 const messageRoutes = require("./routes/messageRoutes");
+const Chat = require("./models/chatModel");
+const User=require("./models/userModel")
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 // const path = require("path");
 const {chats}=require('./data/data')
@@ -16,10 +18,21 @@ app.use(express.json()); // to accept json data
  app.get("/", (req, res) => {
    res.send("API Running!");
  });
- app.get("/api/chat", (req, res) => {
-  res.send(chats);
+ app.post("/api/chat", async(req, res) => {
+  console.log('hello',req.body._id)
+  const fullChat = await Chat.find({ "users": req.body._id });
+  
+  // console.log(fullChat)
+  res.status(200).json(fullChat);
 });
-
+app.get("/api/getAllUsers",async(req,res)=>{
+  const allusers=await User.find({});
+  // console.log(allusers)
+  res.status(400).json({
+    message:'all users fetched',
+    allusers:allusers
+  })
+})
 app.use("/api/user", userRoutes);
 app.use("/api/chat", chatRoutes);
 app.use("/api/message", messageRoutes);

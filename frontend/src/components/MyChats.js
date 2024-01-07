@@ -17,7 +17,7 @@ const MyChats = ({ fetchAgain }) => {
   const toast = useToast();
 
   const fetchChats = async () => {
-    // console.log(user._id);
+    console.log(user._id);
     try {
       const config = {
         headers: {
@@ -25,7 +25,12 @@ const MyChats = ({ fetchAgain }) => {
         },
       };
 
-      const { data } = await axios.get("/api/chat", config);
+      const { data } = await axios.post("/api/chat",{
+         _id:user._id
+      }, config);
+      
+     
+
       setChats(data);
     } catch (error) {
       toast({
@@ -89,7 +94,7 @@ const MyChats = ({ fetchAgain }) => {
       >
         {chats ? (
           <Stack overflowY="scroll">
-            {chats.map((chat) => (
+            {chats?.map((chat) => (
               <Box
                 onClick={() => setSelectedChat(chat)}
                 cursor="pointer"
@@ -107,10 +112,10 @@ const MyChats = ({ fetchAgain }) => {
                 </Text>
                 {chat.latestMessage && (
                   <Text fontSize="xs">
-                    <b>{chat.latestMessage.sender.name} : </b>
-                    {chat.latestMessage.content.length > 50
-                      ? chat.latestMessage.content.substring(0, 51) + "..."
-                      : chat.latestMessage.content}
+                    <b>{chat?.latestMessage?.sender?.name} : </b>
+                    {chat?.latestMessage?.content?.length > 50
+                      ? chat?.latestMessage?.content?.substring(0, 51) + "..."
+                      : chat?.latestMessage?.content}
                   </Text>
                 )}
               </Box>
