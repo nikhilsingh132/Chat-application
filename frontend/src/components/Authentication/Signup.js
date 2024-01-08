@@ -130,9 +130,9 @@ const Signup = () => {
   };
 
   return (
-    <VStack spacing="5px">
+    <VStack spacing="5px" textColor={"white"}>
       <FormControl id="first-name" isRequired>
-        <FormLabel>Name</FormLabel>
+        <FormLabel >Name</FormLabel>
         <Input
           placeholder="Enter Your Name"
           onChange={(e) => setName(e.target.value)}

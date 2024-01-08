@@ -18,7 +18,7 @@ function Homepage() {
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("userInfo"));
-
+ 
     if (user) history.push("/chats");
   }, [history]);
 
@@ -33,16 +33,18 @@ function Homepage() {
         m="40px 0 15px 0"
         borderRadius="lg"
         borderWidth="1px"
+        bgColor={"#212F3C"}
+        textColor={"white"}
       >
         <Text fontSize="4xl" fontFamily="Work sans">
-          Talk-A-Tive
+          ChatVerse
         </Text>
       </Box>
-      <Box bg="white" w="100%" p={4} borderRadius="lg" borderWidth="1px">
+      <Box bgColor={"#212F3C"} w="100%" p={4} borderRadius="lg" borderWidth="1px">
         <Tabs isFitted variant="soft-rounded">
-          <TabList mb="1em">
-            <Tab>Login</Tab>
-            <Tab>Sign Up</Tab>
+        <TabList mb="1em">
+            <Tab  textColor={"white"}>Login</Tab>
+            <Tab  textColor={"white"}>Sign Up</Tab>
           </TabList>
           <TabPanels>
             <TabPanel>
