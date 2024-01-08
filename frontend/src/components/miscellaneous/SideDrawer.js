@@ -78,7 +78,7 @@ function SideDrawer() {
       };
 
       const { data } = await axios.get(`/api/user?search=${search}`, config);
-      console.log('data...',data)
+      console.log('data...', data)
       setLoading(false);
       setSearchResult(data);
     } catch (error) {
@@ -131,10 +131,15 @@ function SideDrawer() {
         bg="white"
         w="100%"
         p="5px 10px 5px 10px"
-        borderWidth="5px"
+        // borderWidth="5px"
+        bgColor={"#212F3C"}
+        textColor={"white"}
       >
         <Tooltip label="Search Users to chat" hasArrow placement="bottom-end">
-          <Button variant="ghost" onClick={onOpen}>
+          <Button _hover={{
+            background: "#38B2AC",
+            color: "white",
+          }} variant="ghost" onClick={onOpen}>
             <i className="fas fa-search"></i>
             <Text d={{ base: "none", md: "flex" }} px={4}>
               Search User
@@ -142,7 +147,7 @@ function SideDrawer() {
           </Button>
         </Tooltip>
         <Text fontSize="2xl" fontFamily="Work sans">
-          Talk-A-Tive
+          ChatVerse
         </Text>
         <div>
           <Menu>
@@ -153,7 +158,8 @@ function SideDrawer() {
               />
               <BellIcon fontSize="2xl" m={1} />
             </MenuButton>
-            <MenuList pl={2}>
+            <MenuList pl={2} bgColor={"#212F3C"}
+              textColor={"white"}>
               {!notification.length && "No New Messages"}
               {notification.map((notif) => (
                 <MenuItem
@@ -171,7 +177,11 @@ function SideDrawer() {
             </MenuList>
           </Menu>
           <Menu>
-            <MenuButton as={Button} bg="white" rightIcon={<ChevronDownIcon />}>
+            <MenuButton _hover={{
+                background: "#38B2AC",
+                color: "white",
+              }} as={Button} bgColor={"#212F3C"}
+              textColor={"white"} rightIcon={<ChevronDownIcon />}>
               <Avatar
                 size="sm"
                 cursor="pointer"
@@ -179,13 +189,20 @@ function SideDrawer() {
                 src={user.pic}
               />
             </MenuButton>
-            <MenuList>
+            <MenuList bgColor={"#212F3C"}
+              textColor={"white"}>
               <ProfileModal user={user}>
-                <MenuItem>My Profile</MenuItem>{" "}
+                <MenuItem _hover={{
+                background: "#38B2AC",
+                color: "white",
+              }}>My Profile</MenuItem>{" "}
               </ProfileModal>
               <MenuDivider />
-              <MenuItem onClick={logoutHandler}>Logout</MenuItem>
-            </MenuList>
+              <MenuItem _hover={{
+                background: "#38B2AC",
+                color: "white",
+              }} onClick={logoutHandler}>Logout</MenuItem>
+            </MenuList> 
           </Menu>
         </div>
       </Box>
@@ -193,8 +210,10 @@ function SideDrawer() {
       <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay />
         <DrawerContent>
-          <DrawerHeader borderBottomWidth="1px">Search Users</DrawerHeader>
-          <DrawerBody>
+          <DrawerHeader bgColor={"#212F3C"}
+            textColor={"white"} borderBottomWidth="1px">Search Users</DrawerHeader>
+          <DrawerBody bgColor={"#212F3C"}
+            textColor={"white"} >
             <Box d="flex" pb={2}>
               <Input
                 placeholder="Search by name or email"
@@ -202,13 +221,13 @@ function SideDrawer() {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
               />
-              <Button onClick={handleSearch}>Go</Button>
+              <Button colorScheme='teal' onClick={handleSearch}>Go</Button>
             </Box>
             {loading ? (
               <ChatLoading />
             ) : (
               searchResult?.map((user) => (
-                
+
                 <UserListItem
                   key={user._id}
                   user={user}

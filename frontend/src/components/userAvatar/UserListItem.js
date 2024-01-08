@@ -9,7 +9,7 @@ const UserListItem = ({ user,handleFunction }) => {
     <Box
       onClick={handleFunction}
       cursor="pointer"
-      bg="#E8E8E8"
+      bg="#1F618D"
       _hover={{
         background: "#38B2AC",
         color: "white",
@@ -30,7 +30,7 @@ const UserListItem = ({ user,handleFunction }) => {
         name={user.name}
         src={user.pic}
       />
-      <Box>
+      <Box textColor={"white"}>
         <Text>{user.name}</Text>
         <Text fontSize="xs">
           <b>Email : </b>
