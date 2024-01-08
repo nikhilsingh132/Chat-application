@@ -1,7 +1,7 @@
 {
   "name": "frontend",
   "version": "0.1.0",
-  "proxy": "https://chat-verseapp.netlify.app/",
+  "proxy": "https://chatapp-88sr.onrender.com",
   "private": true,
   "dependencies": {
     "@chakra-ui/icons": "^1.0.13",
