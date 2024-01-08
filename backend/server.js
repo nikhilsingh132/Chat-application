@@ -18,12 +18,12 @@ app.use(express.json()); // to accept json data
  app.get("/", (req, res) => {
    res.send("API Running!");
  });
- app.post("/api/chat", async(req, res) => {
+ app.get("/api/chat", async(req, res) => {
   console.log('hello',req.body._id)
-  const fullChat = await Chat.find({ "users": req.body._id });
+  // const fullChat = await Chat.find({ "users": req.body._id });
   
   // console.log(fullChat)
-  res.status(200).json(fullChat);
+  res.status(200).json(chats);
 });
 app.get("/api/getAllUsers",async(req,res)=>{
   const allusers=await User.find({});

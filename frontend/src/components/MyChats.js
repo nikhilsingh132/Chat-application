@@ -25,9 +25,7 @@ const MyChats = ({ fetchAgain }) => {
         },
       };
 
-      const { data } = await axios.post("/api/chat",{
-         _id:user._id
-      }, config);
+      const { data } = await axios.get("/api/chat", config);
       
      
 
